@@ -1,14 +1,12 @@
 import streamlit as st
 import google.generativeai as genai
 from PIL import Image
-from gtts import gTTS
 import os
-import tempfile
 
 # ===============================
 # 1. Gemini Setup
 # ===============================
-os.environ["GOOGLE_API_KEY"] = "AIzaSyBFDnW8dsPd_dgWpWRPw3kg4mYwX7LitOE"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyBYOXgDZaX0NZQ7QENfm16QrXAthr72qeY"
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 model = genai.GenerativeModel("gemini-flash-latest")
 
@@ -29,9 +27,11 @@ st.markdown("""
 body {
     background-color: #f3f4f6;
 }
+
 .block-container {
     padding-top: 2rem;
 }
+
 .hero {
     background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
     padding: 45px;
@@ -40,13 +40,16 @@ body {
     color: white;
     margin-bottom: 30px;
 }
+
 .upload-box, .result-box {
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.8);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 16px;
     padding: 25px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
+
 .stButton > button {
     background: linear-gradient(135deg,#2563eb,#1e40af);
     color: white;
@@ -55,13 +58,16 @@ body {
     font-size: 16px;
     border: none;
 }
+
 .stButton > button:hover {
     transform: scale(1.03);
     transition: 0.2s ease-in-out;
 }
+
 .result-box {
     animation: fadeIn 0.8s ease-in-out;
 }
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -83,7 +89,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ===============================
-# 5. Sidebar
+# 5. Sidebar (Clean & Professional)
 # ===============================
 with st.sidebar:
     st.markdown("## ⚖️ LegalEase")
@@ -94,26 +100,15 @@ with st.sidebar:
         ["English", "Hindi", "Bhojpuri", "Bengali", "Telugu"]
     )
 
-    audio_enabled = st.checkbox("🔊 Enable Audio Explanation", value=True)
-
     st.markdown("---")
     st.success("✔ 5th-grade reading level")
     st.info("✔ Multilingual support")
-    st.warning("✔ Audio accessibility")
+    st.warning("✔ Highlights risks & dates")
 
 reading_level = "5th Grade Student"
 
-# Language codes for gTTS
-LANG_MAP = {
-    "English": "en",
-    "Hindi": "hi",
-    "Bhojpuri": "hi",
-    "Bengali": "bn",
-    "Telugu": "te"
-}
-
 # ===============================
-# 6. Main Layout
+# 6. Main Layout (Two Columns)
 # ===============================
 col1, col2 = st.columns([2, 1])
 
@@ -132,7 +127,7 @@ with col2:
     - Upload any legal agreement  
     - AI simplifies the content  
     - Key dates & risks highlighted  
-    - Listen in your language 🎧  
+    - Output in your chosen language  
     """)
 
 content_to_process = None
@@ -146,7 +141,7 @@ if uploaded_file:
         content_to_process = uploaded_file.read().decode("utf-8")
 
 # ===============================
-# 7. AI + AUDIO LOGIC
+# 7. Action Button & AI Logic
 # ===============================
 if content_to_process and st.button("✨ Simplify Agreement"):
     with st.spinner("🔍 Analyzing legal document..."):
@@ -171,25 +166,11 @@ if content_to_process and st.button("✨ Simplify Agreement"):
         """
 
         response = model.generate_content([prompt, content_to_process])
-        simplified_text = response.text
 
         st.divider()
         st.markdown("<div class='result-box'>", unsafe_allow_html=True)
         st.markdown(f"### 📝 Simplified Explanation ({target_language})")
-        st.write(simplified_text)
-
-        # ===============================
-        # 🔊 AUDIO OUTPUT
-        # ===============================
-        if audio_enabled:
-            tts = gTTS(
-                text=simplified_text,
-                lang=LANG_MAP[target_language]
-            )
-
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as fp:
-                tts.save(fp.name)
-                st.audio(fp.name, format="audio/mp3")
-
+        st.write(response.text)
         st.markdown("</div>", unsafe_allow_html=True)
+
 
