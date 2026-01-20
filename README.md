@@ -1,0 +1,2 @@
+# ClarifyFlow
+Legal document simplifier.
