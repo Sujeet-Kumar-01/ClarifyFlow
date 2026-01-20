@@ -1,6 +1,3 @@
-# ClarifyFlow
-Legal document simplifier.
-
 
 # LegalEase ⚖️✨
 ### Understand T&C in your own language
@@ -78,12 +75,5 @@ LegalEase solves this by:
 ---
 
 ## 📸 Screenshots
-(Add screenshots here)
+<img width="1892" height="977" alt="image" src="https://github.com/user-attachments/assets/86138042-e4f3-494b-a69a-2d377df5e177" />
 
----
-
-## 👨‍💻 Author
-**Sujeet Kumar**  
-B.Tech CSE | IIIT Kalyani  
-
----
