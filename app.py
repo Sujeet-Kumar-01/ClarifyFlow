@@ -5,8 +5,7 @@ import os
 
 # 1. Setup Gemini
 # Replace 'YOUR_API_KEY' with the key you got from AI Studio
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCSIjqRLBuW4I1pXkL_PQmWd0I3KBT7MRk"
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel('gemini-flash-latest')
 
 # 2. UI Configuration
@@ -53,3 +52,4 @@ if uploaded_file is not None:
             st.divider()
             st.markdown(f"### Simplified Summary ({target_language})")
             st.write(response.text)
+
