@@ -8,7 +8,7 @@ import tempfile
 # ===============================
 # 1. Gemini Setup
 # ===============================
-os.environ["GOOGLE_API_KEY"] = "AIzaSyBYOXgDZaX0NZQ7QENfm16QrXAthr72qeY"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyBFDnW8dsPd_dgWpWRPw3kg4mYwX7LitOE"
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 model = genai.GenerativeModel("gemini-flash-latest")
 
@@ -192,3 +192,4 @@ if content_to_process and st.button("✨ Simplify Agreement"):
                 st.audio(fp.name, format="audio/mp3")
 
         st.markdown("</div>", unsafe_allow_html=True)
+
