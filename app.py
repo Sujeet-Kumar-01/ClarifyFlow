@@ -9,7 +9,7 @@ model = genai.GenerativeModel("gemini-flash-latest")
 
 # ------------------ Page Config ------------------
 st.set_page_config(
-    page_title="ClarifyFlow",
+    page_title="LegalEase",
     page_icon="📄",
     layout="centered"
 )
@@ -53,7 +53,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ------------------ Header ------------------
-st.markdown('<div class="title-text">📘 Understand T&C in your own language</div>', unsafe_allow_html=True)
+st.markdown('<div class="title-text">⚖️ LegalEase – Understand T&C in your own language</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="subtitle-text">Translate complex agreements into simple, 5th-grade level summaries.</div>',
     unsafe_allow_html=True
@@ -113,3 +113,4 @@ if content_to_process and st.button("✨ Simplify Now"):
         st.markdown(f"### ✅ Simplified Explanation ({target_language})")
         st.write(response.text)
         st.markdown('</div>', unsafe_allow_html=True)
+
