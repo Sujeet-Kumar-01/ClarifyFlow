@@ -20,72 +20,115 @@ st.set_page_config(
 )
 
 # ===============================
-# 3. Custom CSS for Modern UI
+# 3. Global Custom CSS (Modern UI)
 # ===============================
 st.markdown("""
 <style>
-.main {
-    background-color: #f8f9fa;
+body {
+    background-color: #f3f4f6;
 }
+
 .block-container {
     padding-top: 2rem;
 }
-h1 {
-    color: #1f2937;
+
+.hero {
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    padding: 45px;
+    border-radius: 20px;
     text-align: center;
+    color: white;
+    margin-bottom: 30px;
 }
-h3 {
-    text-align: center;
-    color: #374151;
-}
-.upload-box {
-    border: 2px dashed #9ca3af;
-    padding: 30px;
-    border-radius: 12px;
-    background-color: #ffffff;
-}
-.result-box {
-    background-color: #ffffff;
+
+.upload-box, .result-box {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.stButton > button {
+    background: linear-gradient(135deg,#2563eb,#1e40af);
+    color: white;
+    border-radius: 14px;
+    padding: 12px 28px;
+    font-size: 16px;
+    border: none;
+}
+
+.stButton > button:hover {
+    transform: scale(1.03);
+    transition: 0.2s ease-in-out;
+}
+
+.result-box {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 </style>
 """, unsafe_allow_html=True)
 
 # ===============================
-# 4. Header Section
+# 4. Hero Section
 # ===============================
-st.markdown("<h1>⚖️ LegalEase</h1>", unsafe_allow_html=True)
-st.markdown("<h3>Understand T&C in your own language</h3>", unsafe_allow_html=True)
-st.markdown(
-    "<p style='text-align:center;color:#6b7280;'>Translate complex agreements into simple, 5th-grade level summaries.</p>",
-    unsafe_allow_html=True
-)
-
-st.divider()
+st.markdown("""
+<div class="hero">
+    <h1 style="font-size:48px;">⚖️ LegalEase</h1>
+    <h3>Understand T&C in your own language</h3>
+    <p style="font-size:16px;opacity:0.9;">
+        Legal contracts, explained like you're 10.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 # ===============================
-# 5. Sidebar Settings
+# 5. Sidebar (Clean & Professional)
 # ===============================
 with st.sidebar:
-    st.header("⚙️ Settings")
+    st.markdown("## ⚖️ LegalEase")
+    st.caption("AI-powered legal simplification")
+
     target_language = st.selectbox(
-        "Choose Language",
+        "🌐 Choose Language",
         ["English", "Hindi", "Bhojpuri", "Bengali", "Telugu"]
     )
-    reading_level = "5th Grade Student"
-    st.info("📄 Upload a legal agreement to simplify it instantly.")
+
+    st.markdown("---")
+    st.success("✔ 5th-grade reading level")
+    st.info("✔ Multilingual support")
+    st.warning("✔ Highlights risks & dates")
+
+reading_level = "5th Grade Student"
 
 # ===============================
-# 6. File Upload Section
+# 6. Main Layout (Two Columns)
 # ===============================
-st.markdown("<div class='upload-box'>", unsafe_allow_html=True)
-uploaded_file = st.file_uploader(
-    "📤 Upload a Contract (Image or Text)",
-    type=["png", "jpg", "jpeg", "txt"]
-)
-st.markdown("</div>", unsafe_allow_html=True)
+col1, col2 = st.columns([2, 1])
+
+with col1:
+    st.markdown("### 📤 Upload Legal Agreement")
+    st.markdown("<div class='upload-box'>", unsafe_allow_html=True)
+    uploaded_file = st.file_uploader(
+        "Upload image or text file",
+        type=["png", "jpg", "jpeg", "txt"]
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with col2:
+    st.markdown("### ℹ️ How It Works")
+    st.markdown("""
+    - Upload any legal agreement  
+    - AI simplifies the content  
+    - Key dates & risks highlighted  
+    - Output in your chosen language  
+    """)
 
 content_to_process = None
 
