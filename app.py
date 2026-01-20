@@ -174,3 +174,4 @@ if content_to_process and st.button("✨ Simplify Agreement"):
         st.markdown("</div>", unsafe_allow_html=True)
 
 
+
