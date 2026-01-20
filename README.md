@@ -102,5 +102,6 @@ LegalEase solves this by:
 ---
 
 ## 📸 Screenshots
-<img width="1892" height="977" alt="image" src="https://github.com/user-attachments/assets/86138042-e4f3-494b-a69a-2d377df5e177" />
+<img width="1913" height="1021" alt="Screenshot 2026-01-21 042115" src="https://github.com/user-attachments/assets/a5cefd11-16e5-473e-b305-afecc94c6441" />
+
 
