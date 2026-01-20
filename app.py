@@ -6,7 +6,7 @@ import os
 # ===============================
 # 1. Gemini Setup
 # ===============================
-os.environ["GOOGLE_API_KEY"] = "AIzaSyDdKtmcCToeyDploYO_4XRUy0cHP9UiX-s"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyBYOXgDZaX0NZQ7QENfm16QrXAthr72qeY"
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 model = genai.GenerativeModel("gemini-flash-latest")
 
@@ -172,3 +172,4 @@ if content_to_process and st.button("✨ Simplify Agreement"):
         st.markdown(f"### 📝 Simplified Explanation ({target_language})")
         st.write(response.text)
         st.markdown("</div>", unsafe_allow_html=True)
+
