@@ -37,11 +37,38 @@ LegalEase solves this by:
 
 ## 🛠️ Tech Stack (Google Technologies)
 
-- **Frontend:** HTML, CSS, JavaScript (Modern UI)
-- **Backend:** Node.js + Express
-- **AI & NLP:** Google Gemini API
-- **Translation:** Google Cloud Translation API
-- **Hosting:** Google Cloud / Firebase (optional)
+## 🧱 Tech Stack
+
+### 🖥️ Frontend & UI
+- **Streamlit** – Rapid web app development with interactive UI components
+- **Custom CSS** – Modern, clean, and user-friendly interface styling
+
+### 🧠 AI & Natural Language Processing
+- **Google Gemini API** (`gemini-flash-latest`)
+  - Simplifies complex legal agreements into 5th-grade level language
+  - Extracts key points, dates, risks, and action items
+  - Provides multilingual responses (English, Hindi, Bhojpuri, Bengali, Telugu)
+
+### 🌍 Multilingual Support
+- **Gemini Native Multilingual Capabilities**
+  - No external translation library required
+  - Supports regional and local Indian languages
+
+### 📄 Document Processing
+- **PIL (Python Imaging Library)** – Handles image-based legal documents
+- **Text Processing** – Reads and processes `.txt` agreement files
+
+### 🔧 Backend & Application Logic
+- **Python** – Core application logic and AI orchestration
+- **Environment Variables** – Secure API key management using `os.environ`
+
+### ☁️ Cloud & Deployment (Scalable)
+- **Google Cloud Ecosystem**
+  - Google Gemini (Generative AI)
+  - Deployable on Streamlit Cloud or Google Cloud Run
+
+---
+
 
 ---
 
